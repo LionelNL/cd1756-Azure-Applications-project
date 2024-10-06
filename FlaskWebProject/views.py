@@ -23,6 +23,7 @@ def home():
         user = User.query.filter_by(username=current_user.username).first_or_404()
         posts = Post.query.all()
         app.logger.info('User {} accessed the home page.'.format(current_user.username))
+        app.logger.warning('Log in successful.')
     except Exception as e:
         app.logger.error('Error occurred: {}'.format(e))
 
