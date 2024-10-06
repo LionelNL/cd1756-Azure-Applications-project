@@ -22,15 +22,14 @@ def home():
     try:
         user = User.query.filter_by(username=current_user.username).first_or_404()
         posts = Post.query.all()
-        app.logger.warning('User {} accessed the home page.'.format(current_user.username))
-
+        app.logger.info('User {} accessed the home page.'.format(current_user.username))
     except Exception as e:
-        app.logger.warning('Error occurred: {}'.format(e))
+        app.logger.error('Error occurred: {}'.format(e))
 
     return render_template(
-    'index.html',
-    title='Home Page',
-    posts=posts
+        'index.html',
+        title='Home Page',
+        posts=posts
     )
     # user = User.query.filter_by(username=current_user.username).first_or_404()
     # posts = Post.query.all()
